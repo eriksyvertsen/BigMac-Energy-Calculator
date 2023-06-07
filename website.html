@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kilowatt-Hours to Big Macs Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        #falling-hamburgers {
+            display: none;
+            margin: 40px auto;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kilowatt-Hours to Big Macs Converter</h1>
+    <label for="kwh">Enter Kilowatt-Hours (kWh):</label>
+    <input type="number" id="kwh" min="0" step="any" required>
+    <br>
+    <button onclick="convertToBigMacs()">Convert</button>
+    <br>
+    <p id="result"></p>
+    <img id="falling-hamburgers" src="https://images.squarespace-cdn.com/content/v1/57c8731b579fb36a9d0eaedc/1624823545581-WWJZ5SWAMAKMK5WWYV10/Raining_Burgers.gif" alt="Falling Hamburgers">
+
+    <script>
+        function convertToBigMacs() {
+            var kwhInput = document.getElementById("kwh");
+            var kwhValue = parseFloat(kwhInput.value);
+            
+            if (!isNaN(kwhValue)) {
+                var bigMacs = kwhValue * 860 / 563;
+                var bigMacsPerDay = Math.round(bigMacs * 24);
+                var bigMacsPerWeek = Math.round(bigMacs * (24*7));
+                var bigMacsPerYear = Math.round(bigMacs * (24*365));
+                var resultText = kwhValue + " kilowatt-hours is equivalent to approximately " + Math.round(bigMacs) + " Big Macs. ";
+                resultText += "That's about " + bigMacsPerDay + " Big Macs per day, " + bigMacsPerWeek + " Big Macs per week, and " + bigMacsPerYear + " Big Macs per year.";
+                document.getElementById("result").textContent = resultText;
+                document.getElementById("falling-hamburgers").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
